@@ -15,6 +15,11 @@ public class CamStickController : MonoBehaviour
         curPos = mT.position;
     }
 
+    // private void Update()
+    // {
+    //     Time.fixedDeltaTime = Time.deltaTime;
+    // }
+
 
     private void LateUpdate()
     {
@@ -22,4 +27,12 @@ public class CamStickController : MonoBehaviour
 
         mT.position = curPos;
     }
+
+    private void FixedUpdate()
+    {
+        curPos = Vector3.Lerp(curPos, AimPos, Time.fixedDeltaTime * 3);
+
+        mT.position = curPos;
+    }
+
 }
